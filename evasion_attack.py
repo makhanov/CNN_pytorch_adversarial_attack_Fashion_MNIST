@@ -73,4 +73,3 @@ accuracy = accuracy_score(targets, all_preds)
 
 print("Confusion_matrix: \n", cm)
 print("Overall accuracy on test set: ", accuracy)
-#hey

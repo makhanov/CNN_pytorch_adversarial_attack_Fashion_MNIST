@@ -120,8 +120,8 @@ print("Confusion_matrix: \n", cm)
 print("Overall accuracy on test set: ", accuracy)
 
 #save the model
-PATH = 'yourpath/model1.pth'
-torch.save(model.state_dict(), PATH)
+PATH = '/Users/makhanov/Yandex.Disk.localized/github_repo/CNN_pytorch/model1.pth'
+torch.save(model, PATH)
 
 #Load model
 #model = TheModelClass(*args, **kwargs)

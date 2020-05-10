@@ -38,7 +38,6 @@ class Network(nn.Module):
         t = F.relu(self.fc1(t.reshape(-1, 12*4*4)))
         t = F.relu(self.fc2(t))
         t = self.out(t)
-        #t = F.softmax(t, dim=1)
         return t
 
 def get_num_correct(preds, labels):
@@ -71,7 +70,7 @@ for lr, batch_size in product(*param_values):
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, sampler=train_sampler)
     valid_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, sampler=valid_sampler)
     optimizer = optim.Adam(model.parameters(), lr=lr)
-    for epoch in range(5):
+    for epoch in range(10):
         total_loss, total_correct, valid_loss, valid_correct = 0, 0, 0, 0
 
         for batch in train_loader: #Get Batch
@@ -98,13 +97,9 @@ for lr, batch_size in product(*param_values):
 
         print("epoch:", epoch, "train_correct:", total_correct, "train_loss:", total_loss,
                 'valid_correct', valid_correct, 'valid_loss:', valid_loss)
-     #collect all the preds first
-#names = ('T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 
-  #      'Sneaker', 'Bag', 'Ankle boot')
-#plt.figure(figsize=(10,10))
+
     print('Lr: ', lr, 'batch size:', batch_size)
-    #print(cm)
-#plot_confusion_matrix(cm, names)
+
 all_preds = []
 targets = []
 test_loader = torch.utils.data.DataLoader(test_set, batch_size=1000)
@@ -123,3 +118,12 @@ accuracy = accuracy_score(targets, all_preds)
 
 print("Confusion_matrix: \n", cm)
 print("Overall accuracy on test set: ", accuracy)
+
+#save the model
+PATH = 'yourpath/model1.pth'
+torch.save(model.state_dict(), PATH)
+
+#Load model
+#model = TheModelClass(*args, **kwargs)
+#model.load_state_dict(torch.load(PATH))
+#model.eval()

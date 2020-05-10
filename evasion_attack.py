@@ -60,7 +60,7 @@ targets = []
 test_loader = torch.utils.data.DataLoader(test_set, batch_size=1000)
 for batch in test_loader:
     images, labels = batch
-    
+
     preds = model(images)
     loss = F.cross_entropy(preds, labels)
 
@@ -73,4 +73,4 @@ accuracy = accuracy_score(targets, all_preds)
 
 print("Confusion_matrix: \n", cm)
 print("Overall accuracy on test set: ", accuracy)
-
+#hey

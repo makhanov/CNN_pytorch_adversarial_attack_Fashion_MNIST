@@ -52,7 +52,7 @@ class Network(nn.Module):
 
 model = Network()
 #Load model
-PATH = '/Users/makhanov/Yandex.Disk.localized/github_repo/CNN_pytorch/model1.pth'
+PATH = 'yourpath/model1.pth'
 model = torch.load(PATH)
 model.eval()
 

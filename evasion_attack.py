@@ -162,6 +162,16 @@ for eps in epsilons:
     accuracies.append(acc)
     examples.append(ex)
 
+plt.figure(figsize=(5,5))
+plt.plot(epsilons, accuracies, "*-")
+plt.yticks(np.arange(0, 1.1, step=0.1))
+plt.xticks(np.arange(0, .35, step=0.05))
+plt.title("Accuracy vs Epsilon")
+plt.xlabel("Epsilon")
+plt.ylabel("Accuracy")
+plt.show()
+#plt.savefig("saved/accuracy_epsilon.png", dpi=1200)
+
 #after running adversarial attack here are the results
 '''
 Epsilon: 0      Test Accuracy = 8922 / 10000 = 0.8922
